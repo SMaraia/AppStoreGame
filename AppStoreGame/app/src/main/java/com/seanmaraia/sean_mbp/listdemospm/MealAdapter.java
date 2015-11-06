@@ -74,9 +74,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
 
     @Override
     public void onBindViewHolder(MealViewHolder viewHolder, int i){
-        viewHolder.mealname.setText(mItemList.get(i).text);
-        viewHolder.calorieCount.setText(mItemList.get(i).calText);
-        viewHolder.mDate.setText(mItemList.get(i).formattedDate);
+        //viewHolder.mealname.setText(mItemList.get(i).text);
+        //viewHolder.calorieCount.setText(mItemList.get(i).calText);
+        //viewHolder.mDate.setText(mItemList.get(i).formattedDate);
     }
 
     @Override
