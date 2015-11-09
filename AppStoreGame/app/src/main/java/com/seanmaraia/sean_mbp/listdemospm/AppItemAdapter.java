@@ -15,18 +15,18 @@ import java.util.List;
  */
 
 
-public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder> {
+public class AppItemAdapter extends RecyclerView.Adapter<AppItemAdapter.AppItemViewHolder> {
 
     private Context mContext;
 
-    List<Meal> mItemList;
-    public class MealViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    List<AppItem> mItemList;
+    public class AppItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView mealname;
         TextView calorieCount;
         TextView mDate;
         CardView mCardView;
 
-        MealViewHolder(View itemView) {
+        AppItemViewHolder(View itemView) {
             super(itemView);
             mCardView = (CardView)itemView.findViewById(R.id.cv);
             mealname = (TextView)itemView.findViewById(R.id.label);
@@ -55,7 +55,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
         notifyItemRemoved(position);
     }
 
-    MealAdapter(List<Meal> todos){
+    AppItemAdapter(List<AppItem> todos){
         mItemList = todos;
     }
     @Override
@@ -65,15 +65,15 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     }
 
     @Override
-    public MealViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
+    public AppItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.better_list_item, viewGroup, false);
-        MealViewHolder mvh = new MealViewHolder(v);
+        AppItemViewHolder mvh = new AppItemViewHolder(v);
         return mvh;
 
     }
 
     @Override
-    public void onBindViewHolder(MealViewHolder viewHolder, int i){
+    public void onBindViewHolder(AppItemViewHolder viewHolder, int i){
         //viewHolder.mealname.setText(mItemList.get(i).text);
         //viewHolder.calorieCount.setText(mItemList.get(i).calText);
         //viewHolder.mDate.setText(mItemList.get(i).formattedDate);
