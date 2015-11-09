@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.view.View;
@@ -29,10 +30,21 @@ import java.util.Locale;
 
 public class ListActivity extends AppCompatActivity {
 
+    Button testcreateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_activity);
+
+        testcreateButton = (Button)findViewById(R.id.testcreate_button);
+        testcreateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

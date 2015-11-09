@@ -5,4 +5,22 @@
     <string name="title_activity_graph">GraphActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="aboutText">This app was built by Sean Maraia and Charles Fu</string>
+
+    <string-array name="theme_spinner_array">
+        <item>Theme 1</item>
+        <item>Theme 2</item>
+        <item>Theme 3</item>
+    </string-array>
+
+    <string-array name="type_spinner_array">
+        <item>Type 1</item>
+        <item>Type 2</item>
+        <item>Type 3</item>
+    </string-array>
+
+    <string-array name="style_spinner_array">
+        <item>Style 1</item>
+        <item>Style 2</item>
+        <item>Style 3</item>
+    </string-array>
 </resources>
