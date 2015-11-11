@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Test Creation"
         android:id="@+id/testcreate_button"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"/>
 </RelativeLayout>
