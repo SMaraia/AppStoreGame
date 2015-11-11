@@ -21,19 +21,21 @@ public class AppItemAdapter extends RecyclerView.Adapter<AppItemAdapter.AppItemV
 
     List<AppItem> mItemList;
     public class AppItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView mealname;
-        TextView calorieCount;
-        TextView mDate;
+        TextView mIndex;
+        TextView mTheme;
+        TextView mType;
+        TextView mStyle;
         CardView mCardView;
 
         AppItemViewHolder(View itemView) {
             super(itemView);
             mCardView = (CardView)itemView.findViewById(R.id.cv);
-            mealname = (TextView)itemView.findViewById(R.id.label);
-            calorieCount = (TextView)itemView.findViewById(R.id.calories);
-            mDate = (TextView)itemView.findViewById(R.id.date);
+            mIndex = (TextView)itemView.findViewById(R.id.label);
+            mType = (TextView)itemView.findViewById(R.id.app_type);
+            mTheme = (TextView)itemView.findViewById(R.id.app_theme);
+            mStyle = (TextView)itemView.findViewById(R.id.app_style);
 
-            mealname.setOnLongClickListener(
+            mCardView.setOnLongClickListener(
                     new RecyclerView.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View view) {
@@ -74,9 +76,10 @@ public class AppItemAdapter extends RecyclerView.Adapter<AppItemAdapter.AppItemV
 
     @Override
     public void onBindViewHolder(AppItemViewHolder viewHolder, int i){
-        //viewHolder.mealname.setText(mItemList.get(i).text);
-        //viewHolder.calorieCount.setText(mItemList.get(i).calText);
-        //viewHolder.mDate.setText(mItemList.get(i).formattedDate);
+        viewHolder.mIndex.setText("" + mItemList.get(i).index);
+        viewHolder.mTheme.setText(mItemList.get(i).theme);
+        viewHolder.mType.setText(mItemList.get(i).type);
+        viewHolder.mStyle.setText(mItemList.get(i).style);
     }
 
     @Override

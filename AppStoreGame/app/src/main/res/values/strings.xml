@@ -7,20 +7,20 @@
     <string name="aboutText">This app was built by Sean Maraia and Charles Fu</string>
 
     <string-array name="theme_spinner_array">
-        <item>Theme 1</item>
-        <item>Theme 2</item>
-        <item>Theme 3</item>
+        <item>Spooky</item>
+        <item>Children's</item>
+        <item>Educational</item>
     </string-array>
 
     <string-array name="type_spinner_array">
-        <item>Type 1</item>
-        <item>Type 2</item>
-        <item>Type 3</item>
+        <item>Game</item>
+        <item>Utility</item>
+        <item>Social</item>
     </string-array>
 
     <string-array name="style_spinner_array">
-        <item>Style 1</item>
-        <item>Style 2</item>
-        <item>Style 3</item>
+        <item>Casual</item>
+        <item>Enthusiast</item>
+        <item>Professional</item>
     </string-array>
 </resources>

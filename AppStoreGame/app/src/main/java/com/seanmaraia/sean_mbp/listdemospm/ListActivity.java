@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.AccelerateInterpolator;
@@ -59,6 +60,12 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
+    public void onPause(){
+        super.onPause();
+        DataStore dataStore = DataStore.get(this);
+        dataStore.commitChanges(this);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
@@ -79,6 +86,13 @@ public class ListActivity extends AppCompatActivity {
                 String themeString = data.getStringExtra(THEME_DATA);
                 String typeString = data.getStringExtra(TYPE_DATA);
                 String styleString = data.getStringExtra(STYLE_DATA);
+
+                AppItem tempItem = new AppItem();
+                tempItem.index = mData.size();
+                tempItem.theme = themeString;
+                tempItem.type = typeString;
+                tempItem.style = styleString;
+                mData.add(tempItem);
             }
         }
     }
