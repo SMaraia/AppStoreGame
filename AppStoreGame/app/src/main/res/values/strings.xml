@@ -8,7 +8,7 @@
 
     <string-array name="theme_spinner_array">
         <item>Spooky</item>
-        <item>Children's</item>
+        <item>Children\'s</item>
         <item>Educational</item>
     </string-array>
 
