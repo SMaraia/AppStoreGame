@@ -1,7 +1,6 @@
-package com.seanmaraia.sean_mbp.listdemospm;
+package com.seanmaraia.sean_mbp.AppStoreGame;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 /**
  * Created by Sean-MBP on 10/9/15.

@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.seanmaraia.sean_mbp.listdemospm.CreatorActivity">
+    tools:context="com.seanmaraia.sean_mbp.AppStoreGame.CreatorActivity">
 
     <Spinner
         android:layout_width="match_parent"

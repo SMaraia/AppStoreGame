@@ -1,21 +1,15 @@
-package com.seanmaraia.sean_mbp.listdemospm;
+package com.seanmaraia.sean_mbp.AppStoreGame;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.view.View;
-import android.widget.RelativeLayout;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
@@ -64,6 +58,12 @@ public class ListActivity extends AppCompatActivity {
         super.onPause();
         DataStore dataStore = DataStore.get(this);
         dataStore.commitChanges(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

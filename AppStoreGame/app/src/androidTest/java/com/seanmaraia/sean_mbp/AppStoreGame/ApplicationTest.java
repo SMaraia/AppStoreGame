@@ -1,4 +1,4 @@
-package com.seanmaraia.sean_mbp.listdemospm;
+package com.seanmaraia.sean_mbp.AppStoreGame;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
