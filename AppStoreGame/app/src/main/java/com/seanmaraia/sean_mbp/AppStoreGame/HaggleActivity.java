@@ -1,143 +1,153 @@
 package com.seanmaraia.sean_mbp.AppStoreGame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class HaggleActivity extends AppCompatActivity {
 
-    EditText hundredsText, tensText, onesText, tenthsText, hundredthsText;
-    Button hundredsPlusButton, hundredsMinusButton,
-            tensPlusButton, tensMinusButton,
-            onesPlusButton, onesMinusButton,
-            tenthsPlusButton, tenthsMinusButton,
-            hundredthsPlusButton, hundredthsMinusButton,
-            acceptButton, declineButton;
+    TextView mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText;
+    Button mHundredsPlusButton, mHundredsMinusButton,
+            mTensPlusButton, mTensMinusButton,
+            mOnesPlusButton, mOnesMinusButton,
+            mTenthsPlusButton, mTenthsMinusButton,
+            mHundredthsPlusButton, mHundredthsMinusButton,
+            mAcceptButton, mDeclineButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haggle);
 
-        hundredsText = (EditText)findViewById(R.id.hundredsText);
-        tensText = (EditText)findViewById(R.id.tensText);
-        onesText = (EditText)findViewById(R.id.onesText);
-        tenthsText = (EditText)findViewById(R.id.tenthsText);
-        hundredthsText = (EditText)findViewById(R.id.hundredthsText);
+        mHundredsText = (TextView)findViewById(R.id.hundredsText);
+        mTensText = (TextView)findViewById(R.id.tensText);
+        mOnesText = (TextView)findViewById(R.id.onesText);
+        mTenthsText = (TextView)findViewById(R.id.tenthsText);
+        mHundredthsText = (TextView)findViewById(R.id.hundredthsText);
 
-        hundredsPlusButton = (Button)findViewById(R.id.hundredsPlusButton);
-        hundredsPlusButton.setOnClickListener(new View.OnClickListener() {
+        mHundredsPlusButton = (Button)findViewById(R.id.hundredsPlusButton);
+        mHundredsPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(hundredsText.getText().toString());
+                int i = Integer.parseInt(mHundredsText.getText().toString());
                 if (i < 9) { i++; }
-                hundredsText.setText(i);
+                mHundredsText.setText(""+i);
             }
         });
 
-        hundredsMinusButton = (Button)findViewById(R.id.hundredsMinusButton);
-        hundredsMinusButton.setOnClickListener(new View.OnClickListener() {
+        mHundredsMinusButton = (Button)findViewById(R.id.hundredsMinusButton);
+        mHundredsMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(hundredsText.getText().toString());
+                int i = Integer.parseInt(mHundredsText.getText().toString());
                 if (i > 0) { i--; }
-                hundredsText.setText(i);
+                mHundredsText.setText(""+i);
             }
         });
 
-        tensPlusButton = (Button)findViewById(R.id.tensPlusButton);
-        tensPlusButton.setOnClickListener(new View.OnClickListener() {
+        mTensPlusButton = (Button)findViewById(R.id.tensPlusButton);
+        mTensPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(tensText.getText().toString());
+                int i = Integer.parseInt(mTensText.getText().toString());
                 if (i < 9) { i++; }
-                tensText.setText(i);
+                mTensText.setText(""+i);
             }
         });
 
-        tensMinusButton = (Button)findViewById(R.id.tensMinusButton);
-        tensMinusButton.setOnClickListener(new View.OnClickListener() {
+        mTensMinusButton = (Button)findViewById(R.id.tensMinusButton);
+        mTensMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(tensText.getText().toString());
+                int i = Integer.parseInt(mTensText.getText().toString());
                 if (i > 0) { i--; }
-                tensText.setText(i);
+                mTensText.setText(""+i);
             }
         });
 
-        onesPlusButton = (Button)findViewById(R.id.onesPlusButton);
-        onesPlusButton.setOnClickListener(new View.OnClickListener() {
+        mOnesPlusButton = (Button)findViewById(R.id.onesPlusButton);
+        mOnesPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(onesText.getText().toString());
+                int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i < 9) { i++; }
-                onesText.setText(i);
+                mOnesText.setText(""+i);
             }
         });
 
-        onesMinusButton = (Button)findViewById(R.id.onesMinusButton);
-        onesMinusButton.setOnClickListener(new View.OnClickListener() {
+        mOnesMinusButton = (Button)findViewById(R.id.onesMinusButton);
+        mOnesMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(onesText.getText().toString());
+                int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i > 0) { i--; }
-                onesText.setText(i);
+                mOnesText.setText(""+i);
             }
         });
 
-        tenthsPlusButton = (Button)findViewById(R.id.tenthsPlusButton);
-        tenthsPlusButton.setOnClickListener(new View.OnClickListener() {
+        mTenthsPlusButton = (Button)findViewById(R.id.tenthsPlusButton);
+        mTenthsPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(tenthsText.getText().toString());
+                int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i < 9) { i++; }
-                tenthsText.setText(i);
+                mTenthsText.setText(""+i);
             }
         });
 
-        tenthsMinusButton = (Button)findViewById(R.id.tenthsMinusButton);
-        tenthsMinusButton.setOnClickListener(new View.OnClickListener() {
+        mTenthsMinusButton = (Button)findViewById(R.id.tenthsMinusButton);
+        mTenthsMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(tenthsText.getText().toString());
+                int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i > 0) { i--; }
-                tenthsText.setText(i);
+                mTenthsText.setText(""+i);
             }
         });
 
-        hundredthsPlusButton = (Button)findViewById(R.id.hundredthsPlusButton);
-        hundredthsPlusButton.setOnClickListener(new View.OnClickListener() {
+        mHundredthsPlusButton = (Button)findViewById(R.id.hundredthsPlusButton);
+        mHundredthsPlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(hundredthsText.getText().toString());
+                int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i < 9) { i++; }
-                hundredthsText.setText(i);
+                mHundredthsText.setText(""+i);
             }
         });
 
-        hundredthsMinusButton = (Button)findViewById(R.id.hundredthsMinusButton);
-        hundredthsMinusButton.setOnClickListener(new View.OnClickListener() {
+        mHundredthsMinusButton = (Button)findViewById(R.id.hundredthsMinusButton);
+        mHundredthsMinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = Integer.parseInt(hundredthsText.getText().toString());
+                int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i > 0) { i--; }
-                hundredthsText.setText(i);
+                mHundredthsText.setText(""+i);
             }
         });
 
-        acceptButton = (Button)findViewById(R.id.acceptButton);
-        acceptButton.setOnClickListener(new View.OnClickListener() {
+        mAcceptButton = (Button)findViewById(R.id.acceptButton);
+        mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //future code goes here
+                float value = (Integer.parseInt(mHundredsText.getText().toString()) * 100) +
+                        (Integer.parseInt(mTensText.getText().toString()) * 10) +
+                        (Integer.parseInt(mOnesText.getText().toString()) * 1)+
+                        (Integer.parseInt(mTenthsText.getText().toString()) * 0.1f) +
+                        (Integer.parseInt(mHundredthsText.getText().toString()) * .01f);
+
+                Intent intent = new Intent(HaggleActivity.this, ListActivity.class);
+                //Pass data back to parent activity
+                intent.putExtra(ListActivity.GOLD_DATA, value);
+                setResult(ListActivity.RESULT_OK, intent);
                 finish();
             }
         });
 
-        declineButton = (Button)findViewById(R.id.declineButton);
-        declineButton.setOnClickListener(new View.OnClickListener() {
+        mDeclineButton = (Button)findViewById(R.id.declineButton);
+        mDeclineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //future code goes here

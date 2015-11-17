@@ -15,30 +15,42 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity {
 
     static final int CREATOR_ACTIVITY_REQUEST = 1;
+    static final int HAGGLE_ACTIVITY_REQUEST = 2;
     public final static String THEME_DATA = "THEME";
     public final static String TYPE_DATA = "TYPE";
     public final static String STYLE_DATA = "STYLE";
+    public final static String GOLD_DATA = "GOLD";
 
-    Button testcreateButton;
+    Button mTestCreateButton, mTestHaggleButton;
 
     RecyclerView mRecyclerView;
     AppItemAdapter mAdapter;
     ArrayList<AppItem> mData;
+
+    PlayerData player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_activity);
 
-        testcreateButton = (Button)findViewById(R.id.testcreate_button);
-        testcreateButton.setOnClickListener(new View.OnClickListener() {
+        player = new PlayerData();
+
+        mTestCreateButton = (Button)findViewById(R.id.testcreate_button);
+        mTestCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
-                //startActivity(intent);
-
                 Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
                 startActivityForResult(intent, CREATOR_ACTIVITY_REQUEST);
+            }
+        });
+
+        mTestHaggleButton = (Button)findViewById(R.id.testhaggle_button);
+        mTestHaggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListActivity.this, HaggleActivity.class);
+                startActivityForResult(intent, HAGGLE_ACTIVITY_REQUEST);
             }
         });
 
@@ -93,6 +105,16 @@ public class ListActivity extends AppCompatActivity {
                 tempItem.type = typeString;
                 tempItem.style = styleString;
                 mData.add(tempItem);
+            }
+        }
+
+        if (requestCode == HAGGLE_ACTIVITY_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                float goldFloat = data.getFloatExtra(GOLD_DATA, 0);
+
+                player.gold += goldFloat;
+
+                //mTestHaggleButton.setText(""+player.gold);
             }
         }
     }

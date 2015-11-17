@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.seanmaraia.sean_mbp.AppStoreGame.HaggleActivity">
 
-    <EditText
+    <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
@@ -19,9 +19,10 @@
         android:linksClickable="false"
         android:text="@string/testText"
         android:minLines="6"
-        android:maxLines="10" />
+        android:maxLines="10"
+        android:textSize="40px" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -37,7 +38,7 @@
         android:layout_toStartOf="@+id/tensText"
         android:numeric="integer" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -53,7 +54,7 @@
         android:layout_toStartOf="@+id/onesText"
         android:numeric="integer" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -69,7 +70,7 @@
         android:layout_toStartOf="@+id/decimalText"
         android:numeric="integer" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -84,7 +85,7 @@
         android:singleLine="true"
         android:textSize="80px" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -100,7 +101,7 @@
         android:layout_toEndOf="@+id/decimalText"
         android:numeric="integer" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -116,7 +117,7 @@
         android:layout_toEndOf="@+id/tenthsText"
         android:numeric="integer" />
 
-    <EditText
+    <TextView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:inputType="number"

@@ -23,6 +23,17 @@
         android:text="Test Creation"
         android:id="@+id/testcreate_button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="62dp"
+        android:layout_marginStart="62dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Haggle"
+        android:id="@+id/testhaggle_button"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/testcreate_button"
+        android:layout_toEndOf="@+id/testcreate_button" />
 </RelativeLayout>
