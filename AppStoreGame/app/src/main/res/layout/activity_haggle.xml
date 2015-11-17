@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.seanmaraia.sean_mbp.listdemospm.HaggleActivity">
+    tools:context="com.seanmaraia.sean_mbp.AppStoreGame.HaggleActivity">
 
     <EditText
         android:layout_width="300dp"

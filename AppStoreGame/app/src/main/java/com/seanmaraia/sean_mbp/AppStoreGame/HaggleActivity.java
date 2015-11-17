@@ -1,4 +1,4 @@
-package com.seanmaraia.sean_mbp.listdemospm;
+package com.seanmaraia.sean_mbp.AppStoreGame;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
