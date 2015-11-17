@@ -5,6 +5,11 @@
     <string name="title_activity_graph">GraphActivity</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="aboutText">This app was built by Sean Maraia and Charles Fu</string>
+    <string name="testText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Integer lacinia sapien urna, sed eleifend arcu aliquet ut.
+        In vulputate purus sed dolor accumsan fermentum.
+        Etiam ultricies, arcu nec convallis euismod, mi enim consectetur turpis,
+        scelerisque iaculis augue nunc quis sapien. </string>
 
     <string-array name="theme_spinner_array">
         <item>Spooky</item>

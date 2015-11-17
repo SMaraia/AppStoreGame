@@ -42,6 +42,7 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreatorActivity.this, ListActivity.class);
+                //Pass data back to parent activity
                 intent.putExtra(ListActivity.THEME_DATA, themeSpinner.getSelectedItem().toString());
                 intent.putExtra(ListActivity.TYPE_DATA, typeSpinner.getSelectedItem().toString());
                 intent.putExtra(ListActivity.STYLE_DATA, styleSpinner.getSelectedItem().toString());

@@ -34,6 +34,8 @@
         </activity>
         <activity android:name="com.seanmaraia.sean_mbp.AppStoreGame.CreatorActivity" >
         </activity>
+        <activity android:name=".HaggleActivity" >
+        </activity>
     </application>
 
 </manifest>
