@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,10 @@ public class ListActivity extends AppCompatActivity {
     public final static String TYPE_DATA = "TYPE";
     public final static String STYLE_DATA = "STYLE";
     public final static String GOLD_DATA = "GOLD";
+    public final static String APP_COST = "COST";
 
     Button mTestCreateButton, mTestHaggleButton;
-
+    TextView mPlayerGoldText;
     RecyclerView mRecyclerView;
     AppItemAdapter mAdapter;
     ArrayList<AppItem> mData;
@@ -35,6 +37,9 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_activity);
 
         player = new PlayerData();
+
+        mPlayerGoldText = (TextView)findViewById(R.id.playerGold);
+
 
         mTestCreateButton = (Button)findViewById(R.id.testcreate_button);
         mTestCreateButton.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +68,8 @@ public class ListActivity extends AppCompatActivity {
 
         mAdapter = new AppItemAdapter(mData);
         mRecyclerView.setAdapter(mAdapter);
+
+        mPlayerGoldText.setText("$" + player.gold);
 
     }
 
@@ -104,6 +111,7 @@ public class ListActivity extends AppCompatActivity {
                 tempItem.theme = themeString;
                 tempItem.type = typeString;
                 tempItem.style = styleString;
+                player.gold -= data.getIntExtra(APP_COST, 0);
                 mData.add(tempItem);
             }
         }
@@ -117,5 +125,8 @@ public class ListActivity extends AppCompatActivity {
                 //mTestHaggleButton.setText(""+player.gold);
             }
         }
+
+        mPlayerGoldText.setText(player.gold + "g");
+
     }
 }

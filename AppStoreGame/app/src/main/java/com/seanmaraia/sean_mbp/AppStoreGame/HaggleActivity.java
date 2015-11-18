@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class HaggleActivity extends AppCompatActivity {
@@ -14,8 +15,8 @@ public class HaggleActivity extends AppCompatActivity {
             mTensPlusButton, mTensMinusButton,
             mOnesPlusButton, mOnesMinusButton,
             mTenthsPlusButton, mTenthsMinusButton,
-            mHundredthsPlusButton, mHundredthsMinusButton,
-            mAcceptButton, mDeclineButton;
+            mHundredthsPlusButton, mHundredthsMinusButton;
+    ImageButton mAcceptButton, mDeclineButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class HaggleActivity extends AppCompatActivity {
             }
         });
 
-        mAcceptButton = (Button)findViewById(R.id.acceptButton);
+        mAcceptButton = (ImageButton)findViewById(R.id.acceptButton);
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,7 +147,7 @@ public class HaggleActivity extends AppCompatActivity {
             }
         });
 
-        mDeclineButton = (Button)findViewById(R.id.declineButton);
+        mDeclineButton = (ImageButton)findViewById(R.id.declineButton);
         mDeclineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

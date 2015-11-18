@@ -5,6 +5,7 @@ package com.seanmaraia.sean_mbp.AppStoreGame;
  */
 public class AppItem {
     public int index;
+    public double price;
     public String theme, type, style;
 
     public AppItem(){
@@ -12,6 +13,7 @@ public class AppItem {
         theme = "THEME";
         type = "TYPE";
         style = "STYLE";
+        price = 0.00;
     }
 
 }

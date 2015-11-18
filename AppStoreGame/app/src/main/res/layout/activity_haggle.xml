@@ -232,23 +232,27 @@
         android:layout_alignLeft="@+id/hundredthsText"
         android:layout_alignStart="@+id/hundredthsText" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Accept"
-        android:id="@+id/acceptButton"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/hundredsMinusButton"
-        android:layout_alignRight="@+id/onesMinusButton"
-        android:layout_alignEnd="@+id/onesMinusButton" />
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/hundredsMinusButton">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Decline"
-        android:id="@+id/declineButton"
-        android:layout_alignTop="@+id/acceptButton"
-        android:layout_alignRight="@+id/hundredthsMinusButton"
-        android:layout_alignEnd="@+id/hundredthsMinusButton" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/confirmbutton"
+            android:id="@+id/acceptButton"
+            android:layout_margin="20dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cancelbutton"
+            android:id="@+id/declineButton"
+            android:layout_margin="20dp"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

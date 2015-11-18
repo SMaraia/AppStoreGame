@@ -17,23 +17,39 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test Creation"
-        android:id="@+id/testcreate_button"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="62dp"
-        android:layout_marginStart="62dp" />
+        android:id="@+id/buttons"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Creation"
+            android:id="@+id/testcreate_button"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Haggle"
+            android:id="@+id/testhaggle_button"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/playerGold"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test Haggle"
-        android:id="@+id/testhaggle_button"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/testcreate_button"
-        android:layout_toEndOf="@+id/testcreate_button" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="54dp"
+        android:text="$150"
+        android:textAlignment="center"
+        android:paddingBottom="60dp"
+        android:layout_above="@id/buttons"
+        android:gravity="center_horizontal"/>
+
 </RelativeLayout>
