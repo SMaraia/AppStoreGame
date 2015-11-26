@@ -121,8 +121,6 @@ public class ListActivity extends AppCompatActivity {
                 float goldFloat = data.getFloatExtra(GOLD_DATA, 0);
 
                 player.gold += goldFloat;
-
-                //mTestHaggleButton.setText(""+player.gold);
             }
         }
 

@@ -1,5 +1,6 @@
 package com.seanmaraia.sean_mbp.AppStoreGame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 public class HaggleActivity extends AppCompatActivity {
 
-    TextView mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText;
+    TextView mDialogueText, mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText;
     Button mHundredsPlusButton, mHundredsMinusButton,
             mTensPlusButton, mTensMinusButton,
             mOnesPlusButton, mOnesMinusButton,
@@ -18,10 +19,22 @@ public class HaggleActivity extends AppCompatActivity {
             mHundredthsPlusButton, mHundredthsMinusButton;
     ImageButton mAcceptButton, mDeclineButton;
 
+    CustomerData customerData = new CustomerData();
+    CustomerStruct customer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haggle);
+
+        customer = customerData.getRandomCustomer();
+
+        mDialogueText = (TextView)findViewById(R.id.dialogueText);
+        String text =   "Name: " + customer.name + "\n" +
+                        "Age: " + customer.age + "\n" +
+                        "Occupation: " + customer.occupation + "\n\n" +
+                        "Introduction dialogue stuff here";
+        mDialogueText.setText(text);
 
         mHundredsText = (TextView)findViewById(R.id.hundredsText);
         mTensText = (TextView)findViewById(R.id.tensText);
@@ -125,7 +138,7 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i > 0) { i--; }
-                mHundredthsText.setText(""+i);
+                mHundredthsText.setText("" + i);
             }
         });
 
@@ -139,11 +152,20 @@ public class HaggleActivity extends AppCompatActivity {
                         (Integer.parseInt(mTenthsText.getText().toString()) * 0.1f) +
                         (Integer.parseInt(mHundredthsText.getText().toString()) * .01f);
 
-                Intent intent = new Intent(HaggleActivity.this, ListActivity.class);
-                //Pass data back to parent activity
-                intent.putExtra(ListActivity.GOLD_DATA, value);
-                setResult(ListActivity.RESULT_OK, intent);
-                finish();
+                if (value > customer.maxGold) {
+                    String text =   "Name: " + customer.name + "\n" +
+                            "Age: " + customer.age + "\n" +
+                            "Occupation: " + customer.occupation + "\n\n" +
+                            "Price too high";
+                    mDialogueText.setText(text);
+                }
+                else {
+                    Intent intent = new Intent(HaggleActivity.this, ListActivity.class);
+                    //Pass data back to parent activity
+                    intent.putExtra(ListActivity.GOLD_DATA, value);
+                    setResult(ListActivity.RESULT_OK, intent);
+                    finish();
+                }
             }
         });
 
