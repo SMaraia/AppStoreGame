@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class HaggleActivity extends AppCompatActivity {
 
-    TextView mDialogueText, mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText;
+    TextView mDialogueText, mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText, mPercentText;
     Button mHundredsPlusButton, mHundredsMinusButton,
             mTensPlusButton, mTensMinusButton,
             mOnesPlusButton, mOnesMinusButton,
@@ -22,10 +25,22 @@ public class HaggleActivity extends AppCompatActivity {
     CustomerData customerData = new CustomerData();
     CustomerStruct customer;
 
+    ArrayList<AppItem> data;
+
+    float basePrice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haggle);
+
+        DataStore datastore = DataStore.get(this);
+        data = datastore.getData();
+
+        Random r = new Random();
+        int i = r.nextInt(data.size());
+        //basePrice = (float)data.get(i).price;
+        basePrice = 200.00f;
 
         customer = customerData.getRandomCustomer();
 
@@ -36,11 +51,30 @@ public class HaggleActivity extends AppCompatActivity {
                         "Introduction dialogue stuff here";
         mDialogueText.setText(text);
 
+        float tempValue = basePrice;
+
         mHundredsText = (TextView)findViewById(R.id.hundredsText);
+        mHundredsText.setText("" + (int)Math.floor(tempValue / 100));
+
+        tempValue -= (float)Math.floor(tempValue / 100) * 100;
+
         mTensText = (TextView)findViewById(R.id.tensText);
+        mTensText.setText("" + (int)Math.floor(tempValue / 10));
+
+        tempValue -= (float)Math.floor(tempValue / 10) * 10;
+
         mOnesText = (TextView)findViewById(R.id.onesText);
+        mOnesText.setText("" + (int)Math.floor(tempValue));
+
+        tempValue -= (float)Math.floor(tempValue);
+
         mTenthsText = (TextView)findViewById(R.id.tenthsText);
+        mTenthsText.setText("" + (int)Math.floor(tempValue / 0.1f));
+
+        tempValue -= (float)Math.floor(tempValue / 0.1f) * 0.1f;
+
         mHundredthsText = (TextView)findViewById(R.id.hundredthsText);
+        mHundredthsText.setText("" + (int)Math.floor(tempValue / 0.01f));
 
         mHundredsPlusButton = (Button)findViewById(R.id.hundredsPlusButton);
         mHundredsPlusButton.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +82,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mHundredsText.getText().toString());
                 if (i < 9) { i++; }
-                mHundredsText.setText(""+i);
+                mHundredsText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -58,7 +93,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mHundredsText.getText().toString());
                 if (i > 0) { i--; }
-                mHundredsText.setText(""+i);
+                mHundredsText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -68,7 +104,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTensText.getText().toString());
                 if (i < 9) { i++; }
-                mTensText.setText(""+i);
+                mTensText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -78,7 +115,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTensText.getText().toString());
                 if (i > 0) { i--; }
-                mTensText.setText(""+i);
+                mTensText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -88,7 +126,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i < 9) { i++; }
-                mOnesText.setText(""+i);
+                mOnesText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -98,7 +137,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i > 0) { i--; }
-                mOnesText.setText(""+i);
+                mOnesText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -108,7 +148,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i < 9) { i++; }
-                mTenthsText.setText(""+i);
+                mTenthsText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -118,7 +159,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i > 0) { i--; }
-                mTenthsText.setText(""+i);
+                mTenthsText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -128,7 +170,8 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i < 9) { i++; }
-                mHundredthsText.setText(""+i);
+                mHundredthsText.setText("" + i);
+                updatePercent();
             }
         });
 
@@ -139,8 +182,12 @@ public class HaggleActivity extends AppCompatActivity {
                 int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i > 0) { i--; }
                 mHundredthsText.setText("" + i);
+                updatePercent();
             }
         });
+
+        mPercentText = (TextView)findViewById(R.id.percentText);
+
 
         mAcceptButton = (ImageButton)findViewById(R.id.acceptButton);
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
@@ -177,5 +224,17 @@ public class HaggleActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    void updatePercent() {
+        float value = (Integer.parseInt(mHundredsText.getText().toString()) * 100) +
+                (Integer.parseInt(mTensText.getText().toString()) * 10) +
+                (Integer.parseInt(mOnesText.getText().toString()) * 1)+
+                (Integer.parseInt(mTenthsText.getText().toString()) * 0.1f) +
+                (Integer.parseInt(mHundredthsText.getText().toString()) * .01f);
+
+        value = Math.round(value / basePrice * 100);
+
+        mPercentText.setText("" + value + "%");
     }
 }
