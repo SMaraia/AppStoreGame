@@ -39,8 +39,7 @@ public class HaggleActivity extends AppCompatActivity {
 
         Random r = new Random();
         int i = r.nextInt(data.size());
-        //basePrice = (float)data.get(i).price;
-        basePrice = 200.00f;
+        basePrice = (float)data.get(i).price;
 
         customer = customerData.getRandomCustomer();
 
@@ -104,6 +103,14 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTensText.getText().toString());
                 if (i < 9) { i++; }
+                else {
+                    i = 0;
+                    int j = Integer.parseInt(mHundredsText.getText().toString());
+                    if (j < 9) {
+                        j++;
+                        mHundredsText.setText(""+j);
+                    }
+                }
                 mTensText.setText("" + i);
                 updatePercent();
             }
@@ -126,6 +133,14 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i < 9) { i++; }
+                else {
+                    i = 0;
+                    int j = Integer.parseInt(mTensText.getText().toString());
+                    if (j < 9) {
+                        j++;
+                        mTensText.setText(""+j);
+                    }
+                }
                 mOnesText.setText("" + i);
                 updatePercent();
             }
@@ -148,6 +163,14 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i < 9) { i++; }
+                else {
+                    i = 0;
+                    int j = Integer.parseInt(mOnesText.getText().toString());
+                    if (j < 9) {
+                        j++;
+                        mOnesText.setText(""+j);
+                    }
+                }
                 mTenthsText.setText("" + i);
                 updatePercent();
             }
@@ -170,6 +193,14 @@ public class HaggleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i < 9) { i++; }
+                else {
+                    i = 0;
+                    int j = Integer.parseInt(mTenthsText.getText().toString());
+                    if (j < 9) {
+                        j++;
+                        mTenthsText.setText(""+j);
+                    }
+                }
                 mHundredthsText.setText("" + i);
                 updatePercent();
             }
@@ -203,7 +234,14 @@ public class HaggleActivity extends AppCompatActivity {
                     String text =   "Name: " + customer.name + "\n" +
                             "Age: " + customer.age + "\n" +
                             "Occupation: " + customer.occupation + "\n\n" +
-                            "Price too high";
+                            "I can't afford that!";
+                    mDialogueText.setText(text);
+                }
+                else if ((value / basePrice) > customer.maxMarkup) {
+                    String text =   "Name: " + customer.name + "\n" +
+                            "Age: " + customer.age + "\n" +
+                            "Occupation: " + customer.occupation + "\n\n" +
+                            "These prices are OUTRAGEOUS!";
                     mDialogueText.setText(text);
                 }
                 else {
@@ -235,6 +273,6 @@ public class HaggleActivity extends AppCompatActivity {
 
         value = Math.round(value / basePrice * 100);
 
-        mPercentText.setText("" + value + "%");
+        mPercentText.setText("" + (int)value + "%");
     }
 }

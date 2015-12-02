@@ -58,8 +58,10 @@ public class ListActivity extends AppCompatActivity {
         mTestHaggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListActivity.this, HaggleActivity.class);
-                startActivityForResult(intent, HAGGLE_ACTIVITY_REQUEST);
+                if (mData.size() > 0) {
+                    Intent intent = new Intent(ListActivity.this, HaggleActivity.class);
+                    startActivityForResult(intent, HAGGLE_ACTIVITY_REQUEST);
+                }
             }
         });
 
@@ -79,9 +81,11 @@ public class ListActivity extends AppCompatActivity {
         mStartDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runs = 0;
-                waiting = false;
-                handler.postDelayed(runnable, 300);
+                if (mData.size() > 0) {
+                    runs = 0;
+                    waiting = false;
+                    handler.postDelayed(runnable, 300);
+                }
             }
         });
 
@@ -110,9 +114,6 @@ public class ListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -130,8 +131,6 @@ public class ListActivity extends AppCompatActivity {
         }
     };
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
@@ -142,6 +141,7 @@ public class ListActivity extends AppCompatActivity {
                 String themeString = data.getStringExtra(THEME_DATA);
                 String typeString = data.getStringExtra(TYPE_DATA);
                 String styleString = data.getStringExtra(STYLE_DATA);
+                double appCost = data.getIntExtra(APP_COST, 0);
 
                 AppItem tempItem = new AppItem();
                 tempItem.index = mData.size();
@@ -149,7 +149,8 @@ public class ListActivity extends AppCompatActivity {
                 tempItem.type = typeString;
                 tempItem.style = styleString;
                 tempItem.birthDay = player.day;
-                player.gold -= data.getIntExtra(APP_COST, 0);
+                tempItem.price = appCost;
+                player.gold -= appCost;
                 mData.add(tempItem);
             }
         }
@@ -166,6 +167,5 @@ public class ListActivity extends AppCompatActivity {
         }
 
         mPlayerGoldText.setText(player.gold + "g");
-
     }
 }
