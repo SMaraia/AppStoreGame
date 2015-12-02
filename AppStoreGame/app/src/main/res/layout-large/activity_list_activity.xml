@@ -37,6 +37,12 @@
         android:layout_height="wrap_content"
         android:text="Test Haggle"
         android:id="@+id/testhaggle_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Day"
+        android:id="@+id/startday_button"/>
 </LinearLayout>
 
 

@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View;
 import android.widget.TextView;
-
+import android.os.Handler;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
@@ -23,19 +24,22 @@ public class ListActivity extends AppCompatActivity {
     public final static String GOLD_DATA = "GOLD";
     public final static String APP_COST = "COST";
 
-    Button mTestCreateButton, mTestHaggleButton;
+    Button mTestCreateButton, mTestHaggleButton, mStartDayButton;
     TextView mPlayerGoldText;
     RecyclerView mRecyclerView;
     AppItemAdapter mAdapter;
     ArrayList<AppItem> mData;
 
     PlayerData player;
+    private Handler handler;
+    private int runs;
+    private Boolean waiting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_activity);
-
+        handler = new Handler();
         player = new PlayerData();
 
         mPlayerGoldText = (TextView)findViewById(R.id.playerGold);
@@ -69,11 +73,22 @@ public class ListActivity extends AppCompatActivity {
         mAdapter = new AppItemAdapter(mData);
         mRecyclerView.setAdapter(mAdapter);
 
-        mPlayerGoldText.setText("$" + player.gold);
+        mPlayerGoldText.setText(player.gold + "g");
+
+        mStartDayButton = (Button)findViewById(R.id.startday_button);
+        mStartDayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runs = 0;
+                waiting = false;
+                handler.postDelayed(runnable, 300);
+            }
+        });
+
 
     }
 
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         DataStore dataStore = DataStore.get(this);
         dataStore.commitChanges(this);
@@ -95,6 +110,28 @@ public class ListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+             if(runs < 3) {
+
+                 runs += 1;
+
+                 Intent intent = new Intent(ListActivity.this, HaggleActivity.class);
+                 startActivityForResult(intent, HAGGLE_ACTIVITY_REQUEST);
+             }
+            else
+             {
+                 player.day += 1;
+             }
+        }
+    };
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
@@ -111,6 +148,7 @@ public class ListActivity extends AppCompatActivity {
                 tempItem.theme = themeString;
                 tempItem.type = typeString;
                 tempItem.style = styleString;
+                tempItem.birthDay = player.day;
                 player.gold -= data.getIntExtra(APP_COST, 0);
                 mData.add(tempItem);
             }
@@ -121,7 +159,8 @@ public class ListActivity extends AppCompatActivity {
                 float goldFloat = data.getFloatExtra(GOLD_DATA, 0);
 
                 player.gold += goldFloat;
-
+                waiting = false;
+                handler.postDelayed(runnable, 1500);
                 //mTestHaggleButton.setText(""+player.gold);
             }
         }

@@ -76,7 +76,7 @@ public class AppItemAdapter extends RecyclerView.Adapter<AppItemAdapter.AppItemV
 
     @Override
     public void onBindViewHolder(AppItemViewHolder viewHolder, int i){
-        viewHolder.mIndex.setText("" + mItemList.get(i).index);
+        viewHolder.mIndex.setText("Created on Day " + mItemList.get(i).birthDay);
         viewHolder.mTheme.setText(mItemList.get(i).theme);
         viewHolder.mType.setText(mItemList.get(i).type);
         viewHolder.mStyle.setText(mItemList.get(i).style);

@@ -6,8 +6,10 @@ package com.seanmaraia.sean_mbp.AppStoreGame;
 public class PlayerData {
 
     public float gold;
+    public int day;
 
     public PlayerData() {
         gold = 0;
+        day = 0;
     }
 }
