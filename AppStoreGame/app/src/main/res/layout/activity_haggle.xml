@@ -11,8 +11,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
+        android:editable="true"
         android:ems="10"
-        android:id="@+id/textBoxText"
+        android:id="@+id/dialogueText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -76,7 +77,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/decimalText"
-        android:layout_below="@+id/textBoxText"
+        android:layout_below="@+id/dialogueText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="."
@@ -254,6 +255,15 @@
             android:layout_margin="20dp"/>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100%"
+        android:id="@+id/percentText"
+        android:layout_above="@+id/gText"
+        android:layout_alignRight="@+id/gText"
+        android:layout_alignEnd="@+id/gText" />
 
 
 </RelativeLayout>
