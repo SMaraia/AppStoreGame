@@ -26,6 +26,7 @@ public class HaggleActivity extends AppCompatActivity {
     CustomerStruct customer;
 
     ArrayList<AppItem> data;
+    AppItem appData;
 
     float basePrice;
 
@@ -39,7 +40,8 @@ public class HaggleActivity extends AppCompatActivity {
 
         Random r = new Random();
         int i = r.nextInt(data.size());
-        basePrice = (float)data.get(i).price;
+        appData = data.get(i);
+        basePrice = (float)appData.price;
 
         customer = customerData.getRandomCustomer();
 
@@ -47,7 +49,8 @@ public class HaggleActivity extends AppCompatActivity {
         String text =   "Name: " + customer.name + "\n" +
                         "Age: " + customer.age + "\n" +
                         "Occupation: " + customer.occupation + "\n\n" +
-                        "Introduction dialogue stuff here";
+                        "I am looking to purchase your " + appData.style +
+                        " " + appData.theme + " " + appData.type + ".";
         mDialogueText.setText(text);
 
         float tempValue = basePrice;
@@ -104,9 +107,9 @@ public class HaggleActivity extends AppCompatActivity {
                 int i = Integer.parseInt(mTensText.getText().toString());
                 if (i < 9) { i++; }
                 else {
-                    i = 0;
                     int j = Integer.parseInt(mHundredsText.getText().toString());
                     if (j < 9) {
+                        i = 0;
                         j++;
                         mHundredsText.setText(""+j);
                     }
@@ -134,9 +137,9 @@ public class HaggleActivity extends AppCompatActivity {
                 int i = Integer.parseInt(mOnesText.getText().toString());
                 if (i < 9) { i++; }
                 else {
-                    i = 0;
                     int j = Integer.parseInt(mTensText.getText().toString());
                     if (j < 9) {
+                        i = 0;
                         j++;
                         mTensText.setText(""+j);
                     }
@@ -164,9 +167,9 @@ public class HaggleActivity extends AppCompatActivity {
                 int i = Integer.parseInt(mTenthsText.getText().toString());
                 if (i < 9) { i++; }
                 else {
-                    i = 0;
                     int j = Integer.parseInt(mOnesText.getText().toString());
                     if (j < 9) {
+                        i = 0;
                         j++;
                         mOnesText.setText(""+j);
                     }
@@ -194,9 +197,9 @@ public class HaggleActivity extends AppCompatActivity {
                 int i = Integer.parseInt(mHundredthsText.getText().toString());
                 if (i < 9) { i++; }
                 else {
-                    i = 0;
                     int j = Integer.parseInt(mTenthsText.getText().toString());
                     if (j < 9) {
+                        i = 0;
                         j++;
                         mTenthsText.setText(""+j);
                     }
