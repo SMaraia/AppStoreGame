@@ -9,10 +9,6 @@ public class CustomerStruct {
     int age;
     float maxGold;
     float maxMarkup;
-    String introduction;
-    String highPriceResponse;
-    String highMarkupResponse;
-    String purchaseResponse;
 
     public CustomerStruct(String n, String o, int a, float mG, float mM) {
         name = n;

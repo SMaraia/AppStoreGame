@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class HaggleActivity extends AppCompatActivity {
+
+    Context context;
 
     TextView mDialogueText, mHundredsText, mTensText, mOnesText, mTenthsText, mHundredthsText, mPercentText;
     Button mHundredsPlusButton, mHundredsMinusButton,
@@ -30,10 +33,16 @@ public class HaggleActivity extends AppCompatActivity {
 
     float basePrice;
 
+    int strikes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haggle);
+
+        context = getApplicationContext();
+
+        strikes = 0;
 
         DataStore datastore = DataStore.get(this);
         data = datastore.getData();
@@ -234,23 +243,32 @@ public class HaggleActivity extends AppCompatActivity {
                         (Integer.parseInt(mHundredthsText.getText().toString()) * .01f);
 
                 if (value > customer.maxGold) {
-                    String text =   "Name: " + customer.name + "\n" +
-                            "Age: " + customer.age + "\n" +
-                            "Occupation: " + customer.occupation + "\n\n" +
-                            "I can't afford that!";
-                    mDialogueText.setText(text);
+                    if (strikes < 2) {
+                        Toast toast = Toast.makeText(context, "I can't afford that!", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    strikes++;
                 }
                 else if ((value / basePrice) > customer.maxMarkup) {
-                    String text =   "Name: " + customer.name + "\n" +
-                            "Age: " + customer.age + "\n" +
-                            "Occupation: " + customer.occupation + "\n\n" +
-                            "These prices are OUTRAGEOUS!";
-                    mDialogueText.setText(text);
+                    if (strikes < 2) {
+                        Toast toast = Toast.makeText(context, "That seems a bit expensive.", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    strikes++;
                 }
                 else {
                     Intent intent = new Intent(HaggleActivity.this, ListActivity.class);
                     //Pass data back to parent activity
                     intent.putExtra(ListActivity.GOLD_DATA, value);
+                    intent.putExtra(ListActivity.SUCCESS_DATA, true);
+                    setResult(ListActivity.RESULT_OK, intent);
+                    finish();
+                }
+
+                if (strikes > 2) {
+                    Intent intent = new Intent(HaggleActivity.this, ListActivity.class);
+                    intent.putExtra(ListActivity.GOLD_DATA, value);
+                    intent.putExtra(ListActivity.SUCCESS_DATA, false);
                     setResult(ListActivity.RESULT_OK, intent);
                     finish();
                 }

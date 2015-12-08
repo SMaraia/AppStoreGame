@@ -1,5 +1,6 @@
 package com.seanmaraia.sean_mbp.AppStoreGame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +13,13 @@ import android.widget.Button;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Handler;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
+
+    Context context;
 
     static final int CREATOR_ACTIVITY_REQUEST = 1;
     static final int HAGGLE_ACTIVITY_REQUEST = 2;
@@ -23,6 +28,7 @@ public class ListActivity extends AppCompatActivity {
     public final static String STYLE_DATA = "STYLE";
     public final static String GOLD_DATA = "GOLD";
     public final static String APP_COST = "COST";
+    public final static String SUCCESS_DATA = "SUCCESS";
 
     Button mTestCreateButton, mTestHaggleButton, mStartDayButton;
     TextView mPlayerGoldText;
@@ -39,6 +45,9 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_activity);
+
+        context = getApplicationContext();
+
         handler = new Handler();
         player = new PlayerData();
 
@@ -158,11 +167,19 @@ public class ListActivity extends AppCompatActivity {
         if (requestCode == HAGGLE_ACTIVITY_REQUEST) {
             if (resultCode == RESULT_OK) {
                 float goldFloat = data.getFloatExtra(GOLD_DATA, 0);
+                boolean success = data.getBooleanExtra(SUCCESS_DATA, false);
 
-                player.gold += goldFloat;
+                if (success) {
+                    Toast toast = Toast.makeText(context, "Your app was purchased!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    player.gold += goldFloat;
+                } else {
+                    Toast toast = Toast.makeText(context, "The customer left!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
                 waiting = false;
                 handler.postDelayed(runnable, 1500);
-                //mTestHaggleButton.setText(""+player.gold);
             }
         }
 
