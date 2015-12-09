@@ -13,17 +13,26 @@
         <item>Spooky</item>
         <item>Children\'s</item>
         <item>Educational</item>
+        <item>Sports</item>
+        <item>Food</item>
+        <item>Licensed</item>
+
     </string-array>
 
     <string-array name="type_spinner_array">
         <item>Game</item>
         <item>Utility</item>
         <item>Social</item>
+        <item>Weather</item>
+        <item>Reference</item>
+        <item>Networking</item>
     </string-array>
 
     <string-array name="style_spinner_array">
         <item>Casual</item>
         <item>Enthusiast</item>
         <item>Professional</item>
+        <item>Hardcore</item>
+        <item>Blockbuster</item>
     </string-array>
 </resources>

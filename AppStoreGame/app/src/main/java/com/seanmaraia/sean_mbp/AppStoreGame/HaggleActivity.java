@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.Math;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -50,7 +51,8 @@ public class HaggleActivity extends AppCompatActivity {
         Random r = new Random();
         int i = r.nextInt(data.size());
         appData = data.get(i);
-        basePrice = (float)appData.price;
+        basePrice = (float)appData.price * (float)Math.pow(Math.E, -0.91f * (appData.birthDay + 1)) + 9.0f;
+
 
         customer = customerData.getRandomCustomer();
 

@@ -9,4 +9,8 @@
     <style name="MyActionBar">
     </style>
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:padding">0dp</item>
+    </style>
+
 </resources>

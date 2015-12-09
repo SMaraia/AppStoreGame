@@ -9,7 +9,7 @@ public class PlayerData {
     public int day;
 
     public PlayerData() {
-        gold = 0;
+        gold = 200.0f;
         day = 0;
     }
 }

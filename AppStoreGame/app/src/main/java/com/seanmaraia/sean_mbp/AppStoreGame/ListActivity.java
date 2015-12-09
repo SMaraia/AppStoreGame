@@ -30,7 +30,7 @@ public class ListActivity extends AppCompatActivity {
     public final static String APP_COST = "COST";
     public final static String SUCCESS_DATA = "SUCCESS";
 
-    Button mTestCreateButton, mTestHaggleButton, mStartDayButton;
+    Button mTestCreateButton, mStartDayButton;
     TextView mPlayerGoldText;
     RecyclerView mRecyclerView;
     AppItemAdapter mAdapter;
@@ -39,7 +39,7 @@ public class ListActivity extends AppCompatActivity {
     PlayerData player;
     private Handler handler;
     private int runs;
-    private Boolean waiting;
+    private Boolean waiting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,18 +58,9 @@ public class ListActivity extends AppCompatActivity {
         mTestCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
-                startActivityForResult(intent, CREATOR_ACTIVITY_REQUEST);
-            }
-        });
-
-        mTestHaggleButton = (Button)findViewById(R.id.testhaggle_button);
-        mTestHaggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mData.size() > 0) {
-                    Intent intent = new Intent(ListActivity.this, HaggleActivity.class);
-                    startActivityForResult(intent, HAGGLE_ACTIVITY_REQUEST);
+                if(!waiting) {
+                    Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
+                    startActivityForResult(intent, CREATOR_ACTIVITY_REQUEST);
                 }
             }
         });
@@ -90,9 +81,9 @@ public class ListActivity extends AppCompatActivity {
         mStartDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mData.size() > 0) {
+                if (mData.size() > 0 && !waiting) {
                     runs = 0;
-                    waiting = false;
+                    waiting = true;
                     handler.postDelayed(runnable, 300);
                 }
             }
@@ -135,6 +126,7 @@ public class ListActivity extends AppCompatActivity {
              }
             else
              {
+                 waiting = false;
                  player.day += 1;
              }
         }

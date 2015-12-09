@@ -5,18 +5,26 @@
         <item>30</item>
         <item>25</item>
         <item>20</item>
+        <item>40</item>
+        <item>50</item>
+        <item>90</item>
     </integer-array>
 
     <integer-array name="typePriceArray">
         <item>40</item>
         <item>20</item>
         <item>30</item>
+        <item>10</item>
+        <item>25</item>
+        <item>60</item>
     </integer-array>
 
     <integer-array name="stylePriceArray">
         <item>25</item>
         <item>30</item>
         <item>35</item>
+        <item>40</item>
+        <item>100</item>
     </integer-array>
 
 </resources>
