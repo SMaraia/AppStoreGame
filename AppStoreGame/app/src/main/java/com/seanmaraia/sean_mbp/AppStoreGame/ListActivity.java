@@ -60,6 +60,8 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!waiting) {
                     Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
+                    intent.putExtra("PLAYER_GOLD", player.gold);
+                    Log.d("ListActivity", player.gold + "");
                     startActivityForResult(intent, CREATOR_ACTIVITY_REQUEST);
                 }
             }
@@ -83,6 +85,7 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (mData.size() > 0 && !waiting) {
                     runs = 0;
+                    player.gold -= 50;
                     waiting = true;
                     handler.postDelayed(runnable, 300);
                 }

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -24,6 +25,7 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
     TextView priceView;
     ImageButton submitButton;
     int appPrice;
+    float maxPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,9 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
 
         priceView = (TextView) findViewById(R.id.costToMakeApp);
 
+        maxPrice = getIntent().getFloatExtra("PLAYER_GOLD", 0.0f);
+
+        Log.d("CreatorActivity", "" + getIntent().toString());
 
         themeSpinner = (Spinner) findViewById(R.id.theme_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -59,12 +64,19 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
             public void onClick(View v) {
                 Intent intent = new Intent(CreatorActivity.this, ListActivity.class);
                 //Pass data back to parent activity
-                intent.putExtra(ListActivity.THEME_DATA, themeSpinner.getSelectedItem().toString());
-                intent.putExtra(ListActivity.TYPE_DATA, typeSpinner.getSelectedItem().toString());
-                intent.putExtra(ListActivity.STYLE_DATA, styleSpinner.getSelectedItem().toString());
-                intent.putExtra(ListActivity.APP_COST, appPrice);
-                setResult(ListActivity.RESULT_OK, intent);
-                finish();
+                if(maxPrice > appPrice) {
+                    intent.putExtra(ListActivity.THEME_DATA, themeSpinner.getSelectedItem().toString());
+                    intent.putExtra(ListActivity.TYPE_DATA, typeSpinner.getSelectedItem().toString());
+                    intent.putExtra(ListActivity.STYLE_DATA, styleSpinner.getSelectedItem().toString());
+                    intent.putExtra(ListActivity.APP_COST, appPrice);
+                    setResult(ListActivity.RESULT_OK, intent);
+                    finish();
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(), "You can't afford to make this app!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
     }
@@ -72,7 +84,6 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
         Resources res = getResources();
-        Log.d("AppStoreGame","Hi");
         int themePrice = res.getIntArray(R.array.themePriceArray)[themeSpinner.getSelectedItemPosition()];
         int typePrice = res.getIntArray(R.array.typePriceArray)[typeSpinner.getSelectedItemPosition()];
         int stylePrice = res.getIntArray(R.array.stylePriceArray)[styleSpinner.getSelectedItemPosition()];

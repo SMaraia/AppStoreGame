@@ -29,13 +29,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test Creation"
+            android:text="Create an App"
             android:id="@+id/testcreate_button"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Day"
+            android:text="Start Day (- 50g)"
             android:id="@+id/startday_button"/>
 
     </LinearLayout>
