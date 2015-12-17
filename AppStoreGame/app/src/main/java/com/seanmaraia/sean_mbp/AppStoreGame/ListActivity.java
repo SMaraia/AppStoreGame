@@ -49,7 +49,6 @@ public class ListActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         handler = new Handler();
-        player = new PlayerData();
 
         mPlayerGoldText = (TextView)findViewById(R.id.playerGold);
 
@@ -69,6 +68,8 @@ public class ListActivity extends AppCompatActivity {
 
         DataStore dataStore = DataStore.get(this);
         mData = dataStore.getData();
+
+        player = dataStore.getPlayer();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_list);
         mRecyclerView.setHasFixedSize(true);
