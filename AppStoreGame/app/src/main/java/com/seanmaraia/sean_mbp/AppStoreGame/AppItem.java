@@ -4,7 +4,7 @@ package com.seanmaraia.sean_mbp.AppStoreGame;
  * Created by Sean-MBP on 9/18/15.
  */
 public class AppItem {
-    public int index, birthDay;
+    public int index, birthDay, age;
     public double price;
     public String theme, type, style;
 
@@ -15,6 +15,7 @@ public class AppItem {
         style = "STYLE";
         price = 0.00;
         birthDay = -1;
+        age = -1;
     }
 
 }

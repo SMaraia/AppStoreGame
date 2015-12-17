@@ -47,12 +47,30 @@ public class HaggleActivity extends AppCompatActivity {
 
         DataStore datastore = DataStore.get(this);
         data = datastore.getData();
-
+        PlayerData player = datastore.getPlayer();
         Random r = new Random();
         int i = r.nextInt(data.size());
         appData = data.get(i);
-        basePrice = (float)appData.price * (float)Math.pow(Math.E, -0.91f * (appData.birthDay + 1)) + 9.0f;
-
+        if(appData.style == "Casual")
+        {
+            //Will start out much very cheap, but will maintain it's value for a long time
+            basePrice = ((float)appData.price / 2) * (float)Math.pow(Math.E, -0.45f * (player.day - appData.birthDay+ 1)) + 9.0f;
+        }
+        else if(appData.style == "Blockbuster" && player.day - appData.birthDay  < 7)
+        {
+            //For the first week after release, the app will remain at 1/3 cost to make, allowing the creator to recoup costs quickly
+            //But the app will fall off quickly
+            basePrice = (float) appData.price / 3;
+        }
+        else if(appData.style == "Professional")
+        {
+            //The app will lose value quicker, but will have a higher minimum value
+            basePrice = (float)appData.price * (float)Math.pow(Math.E, -0.96f * (player.day - appData.birthDay+ 1)) + 18.0f;
+        }
+        else
+        {
+            basePrice = (float) appData.price * (float) Math.pow(Math.E, -0.91f * (player.day - appData.birthDay + 1)) + 9.0f;
+        }
 
         customer = customerData.getRandomCustomer();
 
