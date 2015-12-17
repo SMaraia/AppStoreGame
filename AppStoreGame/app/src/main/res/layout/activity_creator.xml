@@ -21,12 +21,9 @@
             android:id="@+id/theme_spinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="32dp"
             android:layout_alignParentTop="true"
             android:popupTheme="@style/AppTheme.PopupOverlay"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
-            android:layout_marginTop="64dp"/>
+            android:padding="20dp"/>
 
         <Spinner
             android:layout_width="match_parent"
@@ -34,12 +31,9 @@
             android:id="@+id/type_spinner"
             android:spinnerMode="dropdown"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="32dp"
             android:popupTheme="@style/AppTheme.PopupOverlay"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="64dp"/>
+            android:padding="20dp"/>
 
         <Spinner
             android:layout_width="match_parent"
@@ -48,11 +42,8 @@
             android:spinnerMode="dropdown"
             android:layout_alignParentLeft="true"
             android:popupTheme="@style/AppTheme.PopupOverlay"
-            android:layout_marginLeft="32dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="64dp"/>
+            android:padding="20dp"/>
     </LinearLayout>
 
 

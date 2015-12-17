@@ -61,7 +61,6 @@ public class ListActivity extends AppCompatActivity {
                 if(!waiting) {
                     Intent intent = new Intent(ListActivity.this, CreatorActivity.class);
                     intent.putExtra("PLAYER_GOLD", player.gold);
-                    Log.d("ListActivity", player.gold + "");
                     startActivityForResult(intent, CREATOR_ACTIVITY_REQUEST);
                 }
             }
@@ -83,11 +82,16 @@ public class ListActivity extends AppCompatActivity {
         mStartDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mData.size() > 0 && !waiting) {
+                if (mData.size() > 0 && !waiting && player.gold >= 50) {
                     runs = 0;
                     player.gold -= 50;
                     waiting = true;
                     handler.postDelayed(runnable, 300);
+                } else {
+                    if (player.gold < 50) {
+                        Toast toast = Toast.makeText(context, "Not enough gold.", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -131,6 +135,8 @@ public class ListActivity extends AppCompatActivity {
              {
                  waiting = false;
                  player.day += 1;
+                 Toast toast = Toast.makeText(context, "The day has ended.", Toast.LENGTH_SHORT);
+                 toast.show();
              }
         }
     };
@@ -173,7 +179,6 @@ public class ListActivity extends AppCompatActivity {
                     toast.show();
                 }
 
-                waiting = false;
                 handler.postDelayed(runnable, 1500);
             }
         }

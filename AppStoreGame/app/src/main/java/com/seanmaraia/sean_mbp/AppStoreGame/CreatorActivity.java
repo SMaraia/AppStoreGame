@@ -26,6 +26,8 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
     ImageButton submitButton;
     int appPrice;
     float maxPrice;
+    float gold;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +90,7 @@ public class CreatorActivity extends AppCompatActivity implements AdapterView.On
         int typePrice = res.getIntArray(R.array.typePriceArray)[typeSpinner.getSelectedItemPosition()];
         int stylePrice = res.getIntArray(R.array.stylePriceArray)[styleSpinner.getSelectedItemPosition()];
         appPrice = themePrice + typePrice + stylePrice;
-        priceView.setText( appPrice + "g");
+        priceView.setText( Math.round(maxPrice) + "g - " + appPrice + "g");
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
