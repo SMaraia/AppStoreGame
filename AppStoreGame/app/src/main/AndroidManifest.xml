@@ -5,7 +5,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/ic_launcher">
         <activity
             android:name="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity"
             android:label="@string/app_name"
@@ -19,7 +20,8 @@
         <activity
             android:name="com.seanmaraia.sean_mbp.AppStoreGame.GraphActivity"
             android:label="@string/title_activity_graph"
-            android:parentActivityName="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity" >
+            android:parentActivityName="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity" />
@@ -27,7 +29,8 @@
         <activity
             android:name="com.seanmaraia.sean_mbp.AppStoreGame.AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity" >
+            android:parentActivityName="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.seanmaraia.sean_mbp.AppStoreGame.ListActivity" />
